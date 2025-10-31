@@ -1,5 +1,6 @@
 class Penilaian:
     """Kelas menyimpan nilai mahasiswa dan menghitung nilai akhir berbobot."""
+
     def __init__(self, quiz=0, tugas=0, uts=0, uas=0):
         self.quiz = quiz
         self.tugas = tugas

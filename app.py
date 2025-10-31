@@ -1,4 +1,4 @@
-from tracker import RekapKelas, build_markdown_report, save_text
+from tracker import RekapKelas, build_markdown_report, build_html_report, save_text
 
 def main():
     tracker = RekapKelas()
@@ -12,6 +12,7 @@ def main():
         print("5) Simpan laporan Markdown")
         print("6) Filter nilai < 70 (BONUS)")
         print("7) Keluar")
+        print("8) Ekspor laporan HTML (BONUS EKSTRA)")
 
         choice = input("Pilih menu: ")
 
@@ -40,14 +41,14 @@ def main():
             print("\n📋 Rekap Nilai:")
             for r in tracker.rekap():
                 print(r)
-            input("\nTekan Enter untuk kembali ke menu...")  # 🔹 jeda di sini
+            input("\nTekan Enter untuk kembali ke menu...")
 
         elif choice == "5":
             records = tracker.rekap()
             content = build_markdown_report(records)
             save_text("out/report.md", content)
             print("💾 Laporan tersimpan di out/report.md")
-            input("\nTekan Enter untuk kembali ke menu...")  # 🔹 jeda di sini
+            input("\nTekan Enter untuk kembali ke menu...")
 
         elif choice == "6":
             print("\n🎯 Mahasiswa dengan nilai < 70:")
@@ -55,7 +56,14 @@ def main():
             for r in low_scores:
                 print(r)
             print(f"Total: {len(low_scores)} mahasiswa")
-            input("\nTekan Enter untuk kembali ke menu...")  # 🔹 jeda di sini
+            input("\nTekan Enter untuk kembali ke menu...")
+
+        elif choice == "8":
+            records = tracker.rekap()
+            html_content = build_html_report(records)
+            save_text("out/report.html", html_content)
+            print("🌐 Laporan HTML tersimpan di out/report.html")
+            input("\nTekan Enter untuk kembali ke menu...")
 
         elif choice == "7":
             print("👋 Terima kasih sudah menggunakan Student Performance Tracker!")

@@ -1,5 +1,6 @@
 class Mahasiswa:
     """Kelas merepresentasikan data mahasiswa dengan atribut dasar dan kehadiran."""
+
     def __init__(self, nim, nama, hadir_persen=0):
         self.nim = nim
         self.nama = nama

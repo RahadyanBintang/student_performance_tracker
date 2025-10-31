@@ -3,6 +3,7 @@ from .penilaian import Penilaian
 
 class RekapKelas:
     """Mengelola daftar mahasiswa dan penilaiannya."""
+
     def __init__(self):
         self.data = {}
 
@@ -10,9 +11,15 @@ class RekapKelas:
         self.data[nim] = {'mhs': Mahasiswa(nim, nama), 'nilai': Penilaian()}
 
     def set_hadir(self, nim, persen):
+        if nim not in self.data:
+            print(f"⚠️ NIM {nim} belum terdaftar. Tambahkan mahasiswa terlebih dahulu.")
+            return
         self.data[nim]['mhs'].hadir_persen = persen
 
     def set_penilaian(self, nim, quiz, tugas, uts, uas):
+        if nim not in self.data:
+            print(f"⚠️ NIM {nim} belum terdaftar. Tambahkan mahasiswa terlebih dahulu.")
+            return
         self.data[nim]['nilai'] = Penilaian(quiz, tugas, uts, uas)
 
     def predikat(self, nilai):
